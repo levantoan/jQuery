@@ -1,4 +1,5 @@
 // JavaScript Document
+//Set - Get cookie use jQuery
 (function($) {
 	"use strict";
 	//Cookies
