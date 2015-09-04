@@ -16,6 +16,7 @@ $(document).ready(function(){
 	$(window).scroll(function(){
 		scroll_element();
 	});
+	//mobile scroll
 	$(window).bind('touchmove', function(e) {
 		scroll_element();
 	});
