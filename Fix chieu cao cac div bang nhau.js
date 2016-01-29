@@ -3,7 +3,7 @@ equalheight = function(container) {
 	var currentTallest = 0, currentRowStart = 0, rowDivs = new Array(), $el, topPosition = 0;
 	$(container).each(function() {
 		$el = $(this);
-		$($el).height('auto')
+		$($el).height('auto');
 		topPostion = $el.position().top;
 
 		if (currentRowStart != topPostion) {
@@ -22,7 +22,7 @@ equalheight = function(container) {
 			rowDivs[currentDiv].height(currentTallest);
 		}
 	});
-}
+};
 
 $(window).load(function() {
 	equalheight('.equalheight');
