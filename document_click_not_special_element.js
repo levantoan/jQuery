@@ -4,3 +4,9 @@ $(document).click(function(event) {
   	$('.search_form_nav').removeClass('show_form');
     }
 });
+$(document).mouseup(function (e){
+    var container = $(".bt-find, .header-search");
+    if (!container.is(e.target) && container.has(e.target).length === 0){
+        $('.header-search').hide();
+    }
+});
