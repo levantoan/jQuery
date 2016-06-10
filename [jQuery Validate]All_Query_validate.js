@@ -7,3 +7,9 @@ errorPlacement: function(error, element) {
           }
 	console.log(error,element);
 },
+$.validator.addMethod("date_format", 
+    function(value, element) {
+    	return /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(1|3)\d{3}$/.test(value);
+    }, 
+    "Sorry, I've enabled very strict date validation"
+);
