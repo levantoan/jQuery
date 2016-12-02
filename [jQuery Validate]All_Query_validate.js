@@ -1,3 +1,14 @@
+/*Phone format 999-999-9999
+Use: 
+phone:{ 
+	required: true,
+	customphone: true
+},
+*/
+$.validator.addMethod('customphone', function (value, element) {
+    return this.optional(element) || /^\d{3}-\d{3}-\d{4}$/.test(value);
+}, "Please enter a valid phone number");
+
 //Tùy biến hiển thị tin nhắn cho radio button
 errorPlacement: function(error, element) {
 		if (element.attr("type") == "radio") {
