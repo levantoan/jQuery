@@ -18,3 +18,10 @@ $.fn.wrapStart = function (numWords) {
     node.before('<span>' + first + '</span>');
 };
 $("div").wrapStart(1);
+
+//js chạy khi ở màn hình nào đó
+<script type="text/javascript">
+	if (matchMedia('only screen and (min-width: 641px)').matches) {
+		//code here
+	}
+</script>
