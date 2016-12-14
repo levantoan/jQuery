@@ -24,3 +24,17 @@ $.validator.addMethod("date_format",
     }, 
     "Sorry, I've enabled very strict date validation"
 );
+
+//Format value but not required by regex
+$.validator.addMethod(
+	"regex",
+	function (value, element, regexp) {
+	    var re = new RegExp(regexp);
+	    return this.optional(element) || re.test(value);
+	},
+	"Sorry, I've enabled very strict email validation"
+);
+//Ex format email but not required by regex
+email: {
+	regex: /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/
+},
