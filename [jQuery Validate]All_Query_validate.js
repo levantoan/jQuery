@@ -38,3 +38,6 @@ $.validator.addMethod(
 email: {
 	regex: /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/
 },
+
+//Change div error display
+errorLabelContainer: $(".subscribe_newsletter_mess")
