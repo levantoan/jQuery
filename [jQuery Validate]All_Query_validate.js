@@ -43,7 +43,7 @@ email: {
 errorLabelContainer: $(".subscribe_newsletter_mess")
 
 //required that at least 1 of these is filled out
-jQuery.validator.addMethod("require_from_group", function(value, element, options) {
+$.validator.addMethod("require_from_group", function(value, element, options) {
 	var validator = this;
 	var selector = options[1];
 	var validOrNot = $(selector, element.form).filter(function() {
@@ -57,4 +57,4 @@ jQuery.validator.addMethod("require_from_group", function(value, element, option
 		fields.data('being_validated', false);
 	}
 	return validOrNot;
-}, jQuery.format("Please fill at least {0} of these fields."));
+}, "Please fill at least {0} of these fields.");
