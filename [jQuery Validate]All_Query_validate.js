@@ -41,3 +41,20 @@ email: {
 
 //Change div error display
 errorLabelContainer: $(".subscribe_newsletter_mess")
+
+//required that at least 1 of these is filled out
+jQuery.validator.addMethod("require_from_group", function(value, element, options) {
+	var validator = this;
+	var selector = options[1];
+	var validOrNot = $(selector, element.form).filter(function() {
+		return validator.elementValue(this);
+	}).length >= options[0];
+
+	if(!$(element).data('being_validated')) {
+		var fields = $(selector, element.form);
+		fields.data('being_validated', true);
+		fields.valid();
+		fields.data('being_validated', false);
+	}
+	return validOrNot;
+}, jQuery.format("Please fill at least {0} of these fields."));
