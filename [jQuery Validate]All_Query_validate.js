@@ -41,6 +41,15 @@ email: {
 
 //Change div error display
 errorLabelContainer: $(".subscribe_newsletter_mess")
+errorPlacement: function(error, element) {
+	if (element.attr("type") == "radio") {
+	    error.insertAfter(element.parents('.radio_style_error'));
+	}else if (element.attr("type") == "checkbox") {
+	    error.insertAfter(element.parents('.checkbox_style'));
+	}else {
+	    error.insertAfter(element);
+	}
+},
 
 //required that at least 1 of these is filled out
 
