@@ -43,18 +43,20 @@ email: {
 errorLabelContainer: $(".subscribe_newsletter_mess")
 
 //required that at least 1 of these is filled out
-$.validator.addMethod("require_from_group", function(value, element, options) {
-	var validator = this;
-	var selector = options[1];
-	var validOrNot = $(selector, element.form).filter(function() {
-		return validator.elementValue(this);
-	}).length >= options[0];
 
-	if(!$(element).data('being_validated')) {
-		var fields = $(selector, element.form);
-		fields.data('being_validated', true);
-		fields.valid();
-		fields.data('being_validated', false);
+$.validator.addMethod("require_from_group", function(value, element, options) {
+	var numberRequired = options[0];
+	var selector = options[1];
+	var fields = $(selector, element.form);
+	var filled_fields = fields.filter(function() {
+	// it's more clear to compare with empty string
+	return $(this).val() != ""; 
+	});
+	var empty_fields = fields.not(filled_fields);
+	// we will mark only first empty field as invalid
+	if (filled_fields.length < numberRequired && empty_fields[0] == element) {
+	return false;
 	}
-	return validOrNot;
-}, "Please fill at least {0} of these fields.");
+	return true;
+	// {0} below is the 0th item in the options field
+}, "Please fill out at least {0} of these fields.");
