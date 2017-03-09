@@ -37,3 +37,33 @@ function formatAMPM(date) {
 	var strTime = hours + ':' + minutes + ' ' + ampm;
 	return strTime;
 }
+
+/*Fixed sidebar*/
+$(window).load(function(){
+
+	$(window).scroll(function () {
+		var element = $('#stickSidebar');
+		if (matchMedia('only screen and (min-width: 1000px)').matches) {
+			if (fb_loaded) {
+
+				var eStart = $('.startStickSidebar'),
+					eTop = eStart.offset().top,
+					eHeight = element.outerHeight(),
+					endTop = $('#footer').offset().top;
+				var winScroll = $(window).scrollTop();
+
+				if ((winScroll + eHeight) >= endTop) {
+					element.addClass('sidebar_absolute').removeClass('sidebar_fixed');
+				} else if (winScroll >= eTop) {
+					element.addClass('sidebar_fixed').removeClass('sidebar_absolute');
+				} else {
+					element.removeClass('sidebar_fixed sidebar_absolute');
+				}
+
+			}
+		}else{
+			element.removeClass('sidebar_fixed sidebar_absolute');
+		}
+	});
+
+});
