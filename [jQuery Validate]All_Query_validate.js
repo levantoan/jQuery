@@ -69,3 +69,66 @@ $.validator.addMethod("require_from_group", function(value, element, options) {
 	return true;
 	// {0} below is the 0th item in the options field
 }, "Please fill out at least {0} of these fields.");
+
+
+$.validator.addMethod('vietnamphone', function (value, element) {
+    return /^0+(\d{9,10})$/.test(value);
+}, "Hãy điền đúng số điện thoại");
+$.validator.addMethod("customemail",
+    function(value, element) {
+	if(value == "") return true;
+	return /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(value);
+    },
+    "Định dạng email không đúng."
+);
+var checkoutForm = $(".page-template-temp-checkout form.checkout.woocommerce-checkout");
+checkoutForm.validate({
+    rules: {
+	'billing_phone': {
+	    required: {
+		depends:function(){
+		    $(this).val($.trim($(this).val()));
+		    return true;
+		}
+	    },
+	    vietnamphone: true
+	},
+	'shipping_phone': {
+	    required: {
+		depends:function(){
+		    $(this).val($.trim($(this).val()));
+		    return true;
+		}
+	    },
+	    vietnamphone: true
+	},
+	'billing_email': {
+	    required: function(element){
+		var require_email = $(element).data('required');
+		return (require_email == 1) ? true : false;
+	    },
+	    customemail: true
+	}
+    },
+    messages: {
+	'billing_phone': "Số điện thoại là bắt buộc",
+	'shipping_phone': "Số điện thoại là bắt buộc",
+	'billing_email': "Email là bắt buộc",
+    },
+    highlight: function (element, errorClass, validClass) {
+	var elem = $(element);
+	if (elem.hasClass("select2-hidden-accessible")) {
+	    elem.closest('.woocommerce-input-wrapper').find('.select2-selection--single').addClass(errorClass);
+	} else {
+	    elem.addClass(errorClass);
+	}
+    },
+    unhighlight: function (element, errorClass, validClass) {
+	var elem = $(element);
+	if (elem.hasClass("select2-hidden-accessible")) {
+	    elem.closest('.woocommerce-input-wrapper').find('.select2-selection--single').removeClass(errorClass);
+	} else {
+	    elem.removeClass(errorClass);
+	}
+    }
+});
