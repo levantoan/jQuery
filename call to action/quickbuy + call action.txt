@@ -1,0 +1,158 @@
+<script>
+jQuery(document).ready(function(){
+    function scroll_element(){
+        let $top = jQuery(window).scrollTop();
+        let eTop = jQuery('.product_meta').offset().top;
+        let windowH = window.innerHeight;
+        if( (windowH + $top) >= eTop){
+            jQuery('.bottom-contact').addClass('showBtn');
+        }else{
+            jQuery('.bottom-contact').removeClass('showBtn');
+        }
+    }
+    scroll_element();
+    jQuery(window).scroll(function(){
+        scroll_element();
+    });
+    jQuery(window).bind('touchmove', function(e) {
+        scroll_element();
+    });
+jQuery('.btn_devvn_buy_now').on('click', function (){
+    jQuery('.devvn_buy_now').trigger('click');
+})
+});
+</script>
+
+////////////////////////////////////////////////////////////////////////////////////
+
+.bottom-contact{display:none}
+
+////////////////////////////////////////////////////////////////////////////////////
+/*css footer menu*/
+.bottom-contact {
+    display: block !important;
+    position: fixed !important;
+    bottom: 0;
+    background: white;
+    width: 100%;
+    z-index: 99;
+    box-shadow: 2px 1px 9px #dedede;
+    border-top: 1px solid #eaeaea;
+}
+.bottom-contact ul li {
+    margin-bottom: 5px;
+    width: 20%;
+    float: left;
+    list-style: none;
+    text-align: center;
+    font-size: 13px;
+}
+.bottom-contact ul li img {
+    width: 25px;
+    margin-top: 8px;
+    margin-bottom: 3px;
+    opacity: 1;
+}
+.bottom-contact ul li span {
+    color: black;
+    font-size: 11px;
+font-weight: bold;
+}
+
+
+ul.buynow-footer li:nth-child(1) {
+    width: 80%;
+}
+
+a.btn_devvn_buy_now.devvn_buy_now_style {
+    margin: 0 !important;
+}
+
+ul.buynow-footer li {
+    margin: 0;
+}
+
+ul.buynow-footer {
+    padding: 5px;
+    overflow: hidden;
+    margin: 0;
+}
+
+ul.buynow-footer li a {
+    display: block;
+}
+
+ul.buynow-footer li img {
+    width: 32px;
+    margin: 2px 0;
+}
+ul.buynow-footer {
+    display: none;
+}
+.bottom-contact.showBtn .buynow-footer {
+    display: block;
+}
+
+.bottom-contact.showBtn ul:not(.buynow-footer) {
+    display: none;
+}
+/*css footer menu*/
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+<div class="bottom-contact">
+<ul>
+<li>
+<a href="#" data-open="#main-menu" data-pos="left" data-bg="main-menu-overlay" data-color="">
+<img alt="DANH MỤC" width="100" height="100" src="https://mobilefunvietnam.com/wp-content/uploads/2023/03/app-drawer-1-300x300.png.webp">
+<br>
+<span>Danh mục</span>
+</a>
+</li>
+<li>
+<a id="message" href="/">
+<img alt="TRANG CHỦ" width="32" height="32" src="https://mobilefunvietnam.com/wp-content/uploads/2023/11/messenger.png">
+<br>
+<span>Facebook</span>
+</a>
+</li><li>
+<a id="trangchu" href="/">
+<img alt="TRANG CHỦ" width="100" height="100" src="https://mobilefunvietnam.com/wp-content/uploads/2023/03/home-1-300x300.png.webp">
+<br>
+<span>Trang chủ</span>
+</a>
+</li>
+<li>
+<a id="hotline" href="tel:0941818969">
+<img alt="Hotline" width="32" height="32" src="https://mobilefunvietnam.com/wp-content/uploads/2023/11/24-hours-support.png">
+<br>
+    <span>Hotline</span>
+</a>
+</li><li>
+<a id="giohang" href="/gio-hang/" data-open="#cart-popup" data-class="off-canvas-cart" title="Giỏ hàng" data-pos="right" "="" class="">
+<img alt="GIỎ HÀNG" width="100" height="100" src="https://mobilefunvietnam.com/wp-content/uploads/2023/03/purchase-300x300.png.webp">
+<br>
+<span>Giỏ hàng</span>
+</a>
+</li>
+
+</ul>
+<ul class="buynow-footer">
+
+
+<li>
+<a href="javascript:void(0);" class="btn_devvn_buy_now devvn_buy_now_style">
+                                <strong>Mua ngay</strong>
+                                <span>Giao hàng &amp; kiểm tra hàng trước thanh toán</span>
+                            </a>
+</li><li>
+<a id="hotline" href="https://zalo.me/0941818969">
+<img alt="Hotline" width="32" height="32" src="https://mobilefunvietnam.com/wp-content/uploads/2023/11/icon-zalo3.png" data-src="https://mobilefunvietnam.com/wp-content/uploads/2023/11/24-hours-support.png" class="lazyloaded">
+<br>
+    <span>Chat Zalo</span>
+</a>
+</li>
+
+</ul>
+</div>
